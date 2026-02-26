@@ -1,50 +1,90 @@
-# Welcome to your Expo app 👋
+# MedAssist AI – Multilingual Healthcare Intelligence System
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+MedAssist AI is a multilingual, AI-powered healthcare information assistant designed to improve medical understanding across India.
 
-## Get started
+This prototype is being developed for the AWS AI Hackathon and leverages AWS-native AI services to responsibly process and summarize medical documents.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Problem We Are Solving
 
-2. Start the app
+Medical documents such as discharge summaries and lab reports are:
 
-   ```bash
-   npx expo start
-   ```
+- Complex and difficult for patients to understand
+- Time-consuming for doctors to review
+- Not available in regional Indian languages
+- Prone to misinterpretation
 
-In the output, you'll find options to open the app in a
+This creates confusion, delays, and reduced treatment adherence.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+MedAssist AI bridges this gap by transforming medical documents into clear, role-specific explanations.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🧠 Core Features
 
-When you're ready, run:
+- 📄 Medical document upload (PDF)
+- 🩺 Role-based summarization:
+  - Doctor → Structured clinical summary
+  - Patient → Simplified explanation
+  - ASHA Worker → Action-oriented guidance
+- 🌐 Multilingual output (English + Hindi)
+- 🔎 Retrieval-Augmented Generation (RAG) to reduce hallucinations
+- 📊 Medical entity extraction (conditions, medications, procedures)
+- ⚖ Responsible AI guardrails (no diagnosis, no prescriptions)
+- 📈 Confidence score indicator
+
+---
+
+## 🛠 Architecture Stack
+
+### Frontend
+- React Native (Expo)
+
+### Backend (Planned AWS Integration)
+- FastAPI (Python)
+
+### AWS Services
+- Amazon Bedrock (Claude 3 Sonnet)
+- Amazon Titan Embeddings
+- Amazon Textract
+- Amazon Comprehend Medical
+- Amazon OpenSearch Serverless
+- Amazon Translate
+- Amazon S3
+- AWS Lambda / EC2
+- AWS Amplify
+
+---
+
+## 🔄 System Flow
+
+1. User uploads medical document
+2. Document stored temporarily in Amazon S3
+3. Text extracted using Amazon Textract
+4. Medical entities identified using Comprehend Medical
+5. Context retrieved using OpenSearch (RAG)
+6. Summary generated via Claude 3 Sonnet (Bedrock)
+7. Output translated (if required)
+8. Structured response displayed in app
+
+---
+
+## 🔐 Responsible AI Commitment
+
+- No medical diagnosis
+- No prescription recommendations
+- No permanent storage of PHI
+- Encrypted storage
+- IAM-based access control
+- Confidence scoring for transparency
+
+MedAssist AI enhances understanding — it does not replace medical professionals.
+
+---
+
+## 📦 Local Development
 
 ```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+npm install
+npx expo start
